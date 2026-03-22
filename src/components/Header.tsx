@@ -57,8 +57,8 @@ export default function Header() {
       >
         <div className="container" style={headerStyles.container}>
           <Link href="/" className="logo" style={{ textDecoration: "none", ...headerStyles.logo }}>
-            <span style={headerStyles.logoIcon}>🦷</span>
-            <span style={headerStyles.logoText}>Dental<span className="text-primary" style={{ fontWeight: 800 }}>Spark</span></span>
+            <span className="logo-icon-mobile" style={headerStyles.logoIcon}>🦷</span>
+            <span className="logo-text-mobile" style={headerStyles.logoText}>Dental<span className="text-primary" style={{ fontWeight: 800 }}>Spark</span></span>
           </Link>
 
           {/* Desktop Nav */}
@@ -251,6 +251,19 @@ export default function Header() {
           
           .mobile-nav-link.active {
             color: var(--color-primary);
+          }
+        }
+        
+        @media (max-width: 320px) {
+          .logo-text-mobile {
+            font-size: 1.15rem !important;
+          }
+          .logo-icon-mobile {
+            font-size: 1.3rem !important;
+          }
+          .btn-primary {
+            font-size: 0.9rem !important;
+            padding: 0.8rem 1rem !important;
           }
         }
       `}} />

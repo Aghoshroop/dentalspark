@@ -54,17 +54,55 @@ export default function ServicesPage() {
              </p>
           </div>
 
+          <style>{`
+            @media (max-width: 768px) {
+              .treatment-card {
+                flex-direction: column !important;
+                min-height: auto !important;
+              }
+              .treatment-image-wrap {
+                min-height: 250px !important;
+                flex: none !important;
+                width: 100% !important;
+              }
+              .treatment-content-block {
+                padding: 2rem !important;
+              }
+            }
+            @media (max-width: 400px) {
+              .treatment-image-wrap {
+                min-height: 200px !important;
+              }
+              .treatment-content-block {
+                padding: 1.25rem !important;
+              }
+              .treatment-title {
+                font-size: 1.4rem !important;
+                line-height: 1.2 !important;
+                margin-bottom: 0.8rem !important;
+              }
+              .treatment-desc {
+                font-size: 0.95rem !important;
+                line-height: 1.6 !important;
+              }
+              .treatment-number {
+                font-size: 0.9rem !important;
+                margin-bottom: 0.25rem !important;
+              }
+            }
+          `}</style>
+
           <div style={detailStyles.grid}>
             {detailedTreatments.map((treatment, idx) => (
-              <div key={idx} style={{ ...detailStyles.card, flexDirection: idx % 2 === 0 ? "row" : "row-reverse" } as React.CSSProperties}>
-                <div style={detailStyles.imageWrap}>
+              <div key={idx} className="treatment-card" style={{ ...detailStyles.card, flexDirection: idx % 2 === 0 ? "row" : "row-reverse" } as React.CSSProperties}>
+                <div className="treatment-image-wrap" style={detailStyles.imageWrap}>
                    <img src={treatment.image} alt={treatment.title} style={detailStyles.image} />
                 </div>
-                <div style={detailStyles.contentBlock}>
-                  <div style={detailStyles.numberBadge}>{(idx + 1).toString().padStart(2, '0')}.</div>
-                  <h3 style={detailStyles.title}>{treatment.title}</h3>
+                <div className="treatment-content-block" style={detailStyles.contentBlock}>
+                  <div className="treatment-number" style={detailStyles.numberBadge}>{(idx + 1).toString().padStart(2, '0')}.</div>
+                  <h3 className="treatment-title" style={detailStyles.title}>{treatment.title}</h3>
                   <div style={{ width: "40px", height: "3px", backgroundColor: "var(--color-primary)", marginBottom: "1.5rem" }}></div>
-                  <p style={detailStyles.desc}>{treatment.desc}</p>
+                  <p className="treatment-desc" style={detailStyles.desc}>{treatment.desc}</p>
                 </div>
               </div>
             ))}

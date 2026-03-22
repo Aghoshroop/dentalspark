@@ -69,7 +69,7 @@ export default function AboutPage() {
         <FeatureStrip />
 
         {/* Why Choose Us Highlight */}
-        <WeTakeCare />
+        <WeTakeCare beforeImage="/i1.png" afterImage="/i2.png" className="section" />
 
         {/* Clinic & Patient Gallery */}
         <div style={{ padding: "var(--spacing-12) 0", backgroundColor: "#f8fafc" }}>

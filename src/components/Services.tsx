@@ -13,7 +13,7 @@ export default function Services() {
 
   const renderContent = () => {
     return (
-      <div style={serviceStyles.contentBox}>
+      <div className="services-content-box" style={serviceStyles.contentBox}>
         <h3 style={serviceStyles.contentTitle}>
           Dental veneers to smile makeovers, we offer various options to transform your smile.
         </h3>
@@ -73,13 +73,41 @@ export default function Services() {
           <h2>We offer the best <span className="text-primary">Services</span></h2>
         </div>
 
-        <div style={serviceStyles.splitLayout}>
+        <div className="services-split" style={serviceStyles.splitLayout}>
+          <style>{`
+            @media (max-width: 500px) {
+              .services-split {
+                flex-direction: column !important;
+              }
+              .services-sidebar {
+                flex: 1 1 100% !important;
+                border-left: none !important;
+                border-bottom: 2px solid rgba(0,0,0,0.05) !important;
+                padding-left: 0 !important;
+                padding-bottom: 1rem !important;
+                flex-direction: row !important;
+                overflow-x: auto !important;
+              }
+              .services-content-area {
+                flex: 1 1 100% !important;
+              }
+              .services-content-box {
+                padding: 1.5rem !important;
+              }
+              .services-tab-btn {
+                font-size: 0.95rem !important;
+                padding: 0.8rem 1rem !important;
+                white-space: nowrap !important;
+              }
+            }
+          `}</style>
           
           {/* Left Navigation */}
-          <div style={serviceStyles.sidebar}>
+          <div className="services-sidebar" style={serviceStyles.sidebar}>
             {tabs.map(tab => (
               <button 
                 key={tab}
+                className="services-tab-btn"
                 onClick={() => setActiveTab(tab)}
                 style={{
                   ...serviceStyles.tabButton,
@@ -92,7 +120,7 @@ export default function Services() {
           </div>
 
           {/* Right Content */}
-          <div style={serviceStyles.contentArea}>
+          <div className="services-content-area" style={serviceStyles.contentArea}>
             {renderContent()}
           </div>
 

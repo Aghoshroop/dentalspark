@@ -34,13 +34,18 @@ const swoopFloatDelayedVariants: Variants = {
   }
 };
 
-export default function WeTakeCare() {
-  // Using two distinct images for true before/after representation
-  const beforeImage = "https://images.unsplash.com/photo-1598256989433-2ba393a54b38?auto=format&fit=crop&q=80&w=800"; 
-  const afterImage = "https://images.unsplash.com/photo-1628177142898-93e46e623636?auto=format&fit=crop&q=80&w=800";
+export default function WeTakeCare({ 
+  beforeImage = "https://images.unsplash.com/photo-1598256989433-2ba393a54b38?auto=format&fit=crop&q=80&w=800",
+  afterImage = "https://images.unsplash.com/photo-1628177142898-93e46e623636?auto=format&fit=crop&q=80&w=800",
+  className = "section section-white"
+}: { 
+  beforeImage?: string, 
+  afterImage?: string,
+  className?: string
+}) {
 
   return (
-    <section className="section section-white" style={{ position: 'relative', overflow: 'hidden' }}>
+    <section className={className} style={{ position: 'relative', overflow: 'hidden' }}>
       {/* Decorative Background Swoosh */}
       <motion.div style={takeStyles.backgroundSwoosh} variants={swoopFloatVariants} animate="float"></motion.div>
       <motion.div style={takeStyles.backgroundSwooshBottom} variants={swoopFloatDelayedVariants} animate="float"></motion.div>
@@ -61,9 +66,22 @@ export default function WeTakeCare() {
         </motion.div>
 
         <div style={takeStyles.grid}>
+          <style>{`
+            @media (max-width: 500px) {
+              .wetakecare-feature-col {
+                flex: 1 1 100% !important;
+                gap: 1.5rem !important;
+              }
+              .wetakecare-slider-frame {
+                flex: 1 1 100% !important;
+                max-width: 100% !important;
+              }
+            }
+          `}</style>
           
           {/* Left Features */}
           <motion.div 
+            className="wetakecare-feature-col"
             style={takeStyles.featuresLeft}
             initial="hidden"
             whileInView="visible"
@@ -91,6 +109,7 @@ export default function WeTakeCare() {
 
           {/* Center Slider */}
           <motion.div 
+            className="wetakecare-slider-frame"
             style={takeStyles.sliderFrame}
             variants={zoomVariants}
             initial="hidden"
@@ -105,6 +124,7 @@ export default function WeTakeCare() {
 
           {/* Right Features */}
           <motion.div 
+            className="wetakecare-feature-col"
             style={takeStyles.featuresRight}
             initial="hidden"
             whileInView="visible"

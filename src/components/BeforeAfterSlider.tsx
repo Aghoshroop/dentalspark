@@ -60,14 +60,34 @@ function SingleSlider({ data }: { data: typeof cases[0] }) {
   const handleTouchStart = () => setIsDragging(true);
 
   return (
-    <div style={styles.caseWrapper}>
+    <div className="slider-case-wrapper" style={styles.caseWrapper}>
+      <style>{`
+        @media (max-width: 500px) {
+          .slider-case-wrapper {
+            padding: 1rem !important;
+            border-radius: 16px !important;
+          }
+          .slider-container-box {
+            height: 250px !important;
+            border-radius: 8px !important;
+          }
+          .slider-case-title {
+            font-size: 1.25rem !important;
+          }
+          .slider-label {
+            padding: 0.2rem 0.6rem !important;
+            font-size: 0.7rem !important;
+          }
+        }
+      `}</style>
       <div style={styles.textContainer}>
-        <h3 style={styles.caseTitle}>{data.title}</h3>
+        <h3 className="slider-case-title" style={styles.caseTitle}>{data.title}</h3>
         <p style={styles.caseDesc}>{data.desc}</p>
       </div>
 
       <div
         ref={containerRef}
+        className="slider-container-box"
         style={styles.container}
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart}
@@ -75,13 +95,13 @@ function SingleSlider({ data }: { data: typeof cases[0] }) {
         {/* AFTER Image (Background) */}
         <div style={styles.imageWrapper}>
           <img src={data.after} alt="After Treatment" style={styles.image} draggable={false} />
-          <div style={{ ...styles.label, right: "1rem" }}>After</div>
+          <div className="slider-label" style={{ ...styles.label, right: "1rem" }}>After</div>
         </div>
 
         {/* BEFORE Image (Clipped Foreground) */}
         <div style={{ ...styles.imageWrapper, clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`, zIndex: 1 }}>
           <img src={data.before} alt="Before Treatment" style={styles.image} draggable={false} />
-          <div style={{ ...styles.label, left: "1rem", backgroundColor: "rgba(100,116,139,0.85)" }}>Before</div>
+          <div className="slider-label" style={{ ...styles.label, left: "1rem", backgroundColor: "rgba(100,116,139,0.85)" }}>Before</div>
         </div>
 
         {/* Slider Interactive Handle */}

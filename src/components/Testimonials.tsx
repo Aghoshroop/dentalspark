@@ -58,9 +58,9 @@ export default function Testimonials({ hideForm = false }: { hideForm?: boolean 
           }}
         >
           {infiniteReviews.map((review, idx) => (
-            <div key={idx} style={sliderStyles.card}>
-              <div style={sliderStyles.quoteIcon}>"</div>
-              <p style={sliderStyles.reviewText}>{review.text}</p>
+            <div key={idx} className="testimonials-card" style={sliderStyles.card}>
+              <div className="testimonials-quote-icon" style={sliderStyles.quoteIcon}>"</div>
+              <p className="testimonials-review-text" style={sliderStyles.reviewText}>{review.text}</p>
               
               <div style={sliderStyles.cardFooter}>
                 <div style={sliderStyles.avatar}>{review.name.charAt(0)}</div>
@@ -91,9 +91,9 @@ export default function Testimonials({ hideForm = false }: { hideForm?: boolean 
 
         {/* Conditional Review Submission Form */}
         {!hideForm && (
-          <div style={formStyles.formContainer}>
+          <div className="testimonials-form-container" style={formStyles.formContainer}>
             <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-              <h3 style={{ fontSize: "1.8rem", color: "var(--color-dark)", fontWeight: 700 }}>Share Your Experience</h3>
+              <h3 className="testimonials-form-heading" style={{ fontSize: "1.8rem", color: "var(--color-dark)", fontWeight: 700 }}>Share Your Experience</h3>
               <p style={{ color: "#64748b", fontSize: "1rem", marginTop: "0.5rem" }}>
                 Leave a rating and help us continue to improve our exceptional care.
               </p>
@@ -104,7 +104,7 @@ export default function Testimonials({ hideForm = false }: { hideForm?: boolean 
                  Thank you for your valuable feedback! Your review will be completely published shortly.
                </div>
             ) : (
-              <form onSubmit={handleReviewSubmit} style={formStyles.formGrid}>
+              <form onSubmit={handleReviewSubmit} className="testimonials-form-grid" style={formStyles.formGrid}>
                 <div style={formStyles.formGroup}>
                   <label style={formStyles.formLabel}>Your Name</label>
                   <input type="text" placeholder="John Doe" required style={formStyles.formInput} />
@@ -146,8 +146,33 @@ export default function Testimonials({ hideForm = false }: { hideForm?: boolean 
           animation: scrollInfinite 40s linear infinite;
         }
         .infinite-track:hover {
-          /* Add cursor hint when hovered and paused */
           cursor: crosshair; 
+        }
+        @media (max-width: 500px) {
+          .testimonials-card {
+            padding: 1.5rem !important;
+            width: 85vw !important;
+          }
+          .testimonials-quote-icon {
+            font-size: 3rem !important;
+            top: -15px !important;
+            left: 1rem !important;
+          }
+          .testimonials-review-text {
+            font-size: 0.95rem !important;
+            margin-bottom: 1.5rem !important;
+          }
+          .testimonials-form-container {
+            padding: 1.5rem !important;
+            margin-top: var(--spacing-8) !important;
+          }
+          .testimonials-form-grid {
+            display: flex !important;
+            flex-direction: column !important;
+          }
+          .testimonials-form-heading {
+            font-size: 1.3rem !important;
+          }
         }
       `}} />
     </section>

@@ -22,10 +22,18 @@ export default function Gallery() {
             Witness the beautiful, confident smiles of our patients after their successful treatments at Dental Spark.
           </p>
         </div>
+        
+        <style>{`
+          @media (max-width: 400px) {
+            .gallery-image-wrap {
+              height: 180px !important;
+            }
+          }
+        `}</style>
 
         <div style={galleryStyles.grid}>
           {images.map((img, idx) => (
-            <div key={idx} style={galleryStyles.imageWrap}>
+            <div key={idx} className="gallery-image-wrap" style={galleryStyles.imageWrap}>
               <Image 
                 src={img} 
                 alt={`Happy patient ${idx + 1}`} 
