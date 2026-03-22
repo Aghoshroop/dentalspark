@@ -1,66 +1,43 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import MarqueeStrip from "@/components/MarqueeStrip";
+import FeatureStrip from "@/components/FeatureStrip";
+import Services from "@/components/Services";
+import DoctorProfile from "@/components/DoctorProfile";
+import Gallery from "@/components/Gallery";
+import Testimonials from "@/components/Testimonials";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import BookingForm from "@/components/BookingForm";
+import Blog from "@/components/Blog";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <MarqueeStrip />
+        <FeatureStrip />
+        <Services />
+        <DoctorProfile />
+        <Gallery />
+        <Testimonials hideForm />
+        <div style={{ padding: "var(--spacing-16) 0", backgroundColor: "#f8fafc" }}>
+           <div className="container" style={{ textAlign: "center", marginBottom: "var(--spacing-12)" }}>
+             <h2 style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>Transforming <span style={{ color: "var(--color-primary)" }}>Smiles</span></h2>
+             <p style={{ color: "var(--color-gray)", maxWidth: "600px", margin: "0 auto" }}>
+               Slide to see the incredible difference our advanced cosmetic procedures can make.
+             </p>
+           </div>
+           <div className="container">
+             <BeforeAfterSlider />
+           </div>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+        <BookingForm />
+        <Blog />
       </main>
-    </div>
+      <Footer />
+    </>
   );
 }
