@@ -14,7 +14,7 @@ export default function Services() {
   const renderContent = () => {
     return (
       <div className="services-content-box" style={serviceStyles.contentBox}>
-        <h3 style={serviceStyles.contentTitle}>
+        <h3 className="services-content-title" style={serviceStyles.contentTitle}>
           Dental veneers to smile makeovers, we offer various options to transform your smile.
         </h3>
         <p style={{ color: "var(--color-gray)", marginBottom: "var(--spacing-6)", lineHeight: 1.6 }}>
@@ -22,40 +22,40 @@ export default function Services() {
           Enjoy the latest technology and painless treatments for a beautiful, confident smile.
         </p>
         
-        <div style={serviceStyles.featuresGrid}>
-          <div style={serviceStyles.featureItem}>
+        <div className="services-feature-grid" style={serviceStyles.featuresGrid}>
+          <div className="services-feature-item" style={serviceStyles.featureItem}>
             <span style={serviceStyles.checkmark}>✓</span> Full Mouth Rehabilitation
           </div>
-          <div style={serviceStyles.featureItem}>
+          <div className="services-feature-item" style={serviceStyles.featureItem}>
             <span style={serviceStyles.checkmark}>✓</span> Ceramic Veneers / Crowns
           </div>
-          <div style={serviceStyles.featureItem}>
+          <div className="services-feature-item" style={serviceStyles.featureItem}>
             <span style={serviceStyles.checkmark}>✓</span> Tooth Extraction
           </div>
-          <div style={serviceStyles.featureItem}>
+          <div className="services-feature-item" style={serviceStyles.featureItem}>
             <span style={serviceStyles.checkmark}>✓</span> Impacted Tooth Extraction
           </div>
-          <div style={serviceStyles.featureItem}>
+          <div className="services-feature-item" style={serviceStyles.featureItem}>
             <span style={serviceStyles.checkmark}>✓</span> Implant Prosthesis
           </div>
-          <div style={serviceStyles.featureItem}>
+          <div className="services-feature-item" style={serviceStyles.featureItem}>
             <span style={serviceStyles.checkmark}>✓</span> RCT - Root Canal Treatment
           </div>
-          <div style={serviceStyles.featureItem}>
+          <div className="services-feature-item" style={serviceStyles.featureItem}>
             <span style={serviceStyles.checkmark}>✓</span> Scaling / Polishing
           </div>
-          <div style={serviceStyles.featureItem}>
+          <div className="services-feature-item" style={serviceStyles.featureItem}>
             <span style={serviceStyles.checkmark}>✓</span> Wisdom Tooth Extraction
           </div>
-          <div style={serviceStyles.featureItem}>
+          <div className="services-feature-item" style={serviceStyles.featureItem}>
             <span style={serviceStyles.checkmark}>✓</span> Tooth Air Polishing
           </div>
-          <div style={serviceStyles.featureItem}>
+          <div className="services-feature-item" style={serviceStyles.featureItem}>
             <span style={serviceStyles.checkmark}>✓</span> Tooth Coloured Fillings
           </div>
         </div>
         
-        <Link href="#booking" className="btn btn-primary" style={{ marginTop: "var(--spacing-6)" }}>
+        <Link href="#booking" className="btn btn-primary services-book-btn" style={{ marginTop: "var(--spacing-6)" }}>
           Book Appointment
         </Link>
       </div>
@@ -75,9 +75,13 @@ export default function Services() {
 
         <div className="services-split" style={serviceStyles.splitLayout}>
           <style>{`
-            @media (max-width: 500px) {
+            @media (max-width: 900px) {
               .services-split {
                 flex-direction: column !important;
+                gap: 1.5rem !important;
+                min-width: 0 !important;
+                max-width: 100% !important;
+                width: 100% !important;
               }
               .services-sidebar {
                 flex: 1 1 100% !important;
@@ -86,18 +90,73 @@ export default function Services() {
                 padding-left: 0 !important;
                 padding-bottom: 1rem !important;
                 flex-direction: row !important;
-                overflow-x: auto !important;
+                flex-wrap: wrap !important;
+                overflow-x: hidden !important;
+                gap: 0.5rem !important;
+                min-width: 0 !important;
+                max-width: 100% !important;
+                width: 100% !important;
               }
               .services-content-area {
                 flex: 1 1 100% !important;
+                min-width: 0 !important;
+                max-width: 100% !important;
+                width: 100% !important;
               }
               .services-content-box {
                 padding: 1.5rem !important;
+                box-sizing: border-box !important;
+                width: 100% !important;
+                overflow: hidden !important;
               }
               .services-tab-btn {
-                font-size: 0.95rem !important;
-                padding: 0.8rem 1rem !important;
-                white-space: nowrap !important;
+                font-size: 0.9rem !important;
+                padding: 0.6rem 0.8rem !important;
+                white-space: normal !important;
+                flex: 1 1 auto !important;
+                text-align: center !important;
+                word-wrap: break-word !important;
+              }
+            }
+            @media (max-width: 350px) {
+              .services-content-box {
+                padding: 1rem 0.75rem !important;
+                word-wrap: break-word !important;
+                overflow-wrap: anywhere !important;
+              }
+              .services-content-title {
+                font-size: 1.15rem !important;
+                word-wrap: break-word !important;
+                overflow-wrap: anywhere !important;
+                hyphens: auto !important;
+                white-space: normal !important;
+              }
+              .services-feature-item {
+                font-size: 0.85rem !important;
+                gap: 0.25rem !important;
+                word-wrap: break-word !important;
+                overflow-wrap: anywhere !important;
+              }
+              .services-feature-grid {
+                grid-template-columns: 1fr !important;
+              }
+              .services-book-btn {
+                font-size: 0.8rem !important;
+                padding: 0.7rem 1rem !important;
+                width: 100% !important;
+                text-align: center !important;
+                white-space: normal !important;
+                word-wrap: break-word !important;
+              }
+              .tagline {
+                font-size: 0.75rem !important;
+                word-wrap: break-word !important;
+                overflow-wrap: anywhere !important;
+              }
+              h2 {
+                font-size: 1.5rem !important;
+                word-wrap: break-word !important;
+                overflow-wrap: anywhere !important;
               }
             }
           `}</style>
