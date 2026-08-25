@@ -40,10 +40,10 @@
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
-  background-color: var(--color-light);
+  background-color: var(--dynamic-bg, #f4f3ed); /* Default to beige */
   color: var(--color-dark);
   scroll-behavior: smooth;
+  transition: background-color 0.1s ease;
 }
 
 a {
@@ -167,9 +167,67 @@ p { color: var(--color-gray); line-height: 1.6; margin-bottom: var(--spacing-4);
   letter-spacing: 1px;
 }
 
+/* Universal Premium Button Hover Animation */
+button, 
+.btn, 
+[class*="-btn"], 
+a[href="#book"] {
+  transition: background-color 0.3s ease, color 0.3s ease, filter 0.3s ease !important;
+}
+
+button:hover:not(:disabled), 
+.btn:hover, 
+[class*="-btn"]:hover, 
+a[href="#book"]:hover {
+  filter: brightness(1.15) !important;
+}
+
+button:active:not(:disabled), 
+.btn:active, 
+[class*="-btn"]:active, 
+a[href="#book"]:active {
+  filter: brightness(0.95) !important;
+}
+
+/* Arrow Circle Animation for CTA Buttons */
+.cta-btn:hover {
+  background-color: #bca374 !important; /* Gold */
+  color: #111 !important;
+}
+.cta-btn:hover .arrow-circle {
+  background-color: #111 !important;
+  color: #bca374 !important;
+}
+.cta-btn:hover .arrow-main {
+  transform: translate(150%, calc(-50% + 1px));
+}
+.cta-btn:hover .arrow-hover {
+  transform: translate(-50%, calc(-50% + 1px));
+}
+
+.arrow-circle {
+  position: relative;
+  overflow: hidden;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  font-size: 12px;
+}
+
+.arrow-main {
+  transform: translate(-50%, calc(-50% + 1px));
+}
+
+.arrow-hover {
+  transform: translate(-250%, calc(-50% + 1px));
+}
+
 /* ULTRA RESPONSIVE 200px+ OVERRIDES */
 html, body {
-  overflow-x: hidden;
   max-width: 100vw;
 }
 * {
@@ -182,7 +240,7 @@ html, body {
   }
   .section, main, footer {
     max-width: 100vw !important;
-    overflow-x: hidden !important;
+    overflow-x: clip !important;
   }
   .glass-card, [style*="borderRadius: 24px"], [style*="borderRadius: 20px"] {
     padding: clamp(1rem, 5vw, 1.5rem) !important;

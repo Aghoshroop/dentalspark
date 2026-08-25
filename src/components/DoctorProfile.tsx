@@ -1,175 +1,161 @@
 "use client";
-import Image from "next/image";
-import { motion, Variants } from "framer-motion";
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 }
-  }
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-};
-
-const pulseVariants: Variants = {
-  pulse: {
-    scale: [1, 1.08, 1],
-    opacity: [0.1, 0.15, 0.1],
-    transition: { duration: 4, repeat: Infinity }
-  }
-};
+import React from "react";
 
 export default function DoctorProfile() {
   return (
-    <section id="dentist" className="section section-white">
-      <motion.div 
-        className="container" 
-        style={docStyles.container}
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-      >
+    <section 
+      style={{
+        backgroundColor: "#f4f3ed",
+        // Graph paper grid pattern
+        backgroundImage: `
+          linear-gradient(to right, rgba(0,0,0,0.04) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(0,0,0,0.04) 1px, transparent 1px)
+        `,
+        backgroundSize: "24px 24px",
+        padding: "8rem 0",
+        position: "relative"
+      }}
+    >
+      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 4vw", display: "flex", flexWrap: "wrap", gap: "5rem", alignItems: "center" }}>
         
-        <motion.div style={docStyles.imageWrapper} variants={itemVariants}>
-          <motion.div style={docStyles.imageBlob} variants={pulseVariants} animate="pulse"></motion.div>
-          <Image 
-            src="/dr.jpg"
-            alt="Dr. Nilam Gada"
-            width={450}
-            height={600}
-            style={docStyles.image}
+        {/* Left Image Section */}
+        <div style={{ flex: "1 1 450px", position: "relative", minHeight: "650px", borderRadius: "16px", overflow: "hidden", boxShadow: "0 20px 50px rgba(0,0,0,0.15)" }}>
+          <img 
+            src="/dr.jpg" 
+            alt="Dr. Nilam Gada" 
+            style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", inset: 0 }} 
           />
-          <motion.div 
-            style={docStyles.floatingBadge}
-            whileHover={{ scale: 1.05 }}
-          >
-            <div style={docStyles.stars}>⭐⭐⭐⭐⭐</div>
-            <strong style={{ display: 'block', color: 'var(--color-dark)' }}>Top Rated Dentist</strong>
-          </motion.div>
-        </motion.div>
-
-        <div style={docStyles.content}>
-          <motion.div variants={itemVariants} style={docStyles.taglineWrapper}>
-             <span className="tagline" style={{ margin: 0, fontSize: "0.85rem", letterSpacing: "1px" }}>Our Expert Dentist</span>
-          </motion.div>
-          <motion.h2 variants={itemVariants}>Dr. Nilam Gada</motion.h2>
-          <motion.h4 variants={itemVariants} style={docStyles.role}>BDS - Dental Surgeon, Implantologist</motion.h4>
-          
-          <motion.div variants={itemVariants} style={docStyles.badge}>
-            <strong>17 Years Experience</strong>
-          </motion.div>
-          
-          <motion.p variants={itemVariants} style={{ marginTop: "1rem" }}>
-            The DENTAL Spark is Dr. NILAM GADA's private practice in Grant Road West running successfully since almost a decade. We emphasise in giving our patients a relaxed, informed and pain free dental experience.
-          </motion.p>
-          <motion.p variants={itemVariants}>
-            Dr. Nilam offers a wide range of services with specializations in various areas like Implants, Cosmetic, Orthodontic and Pediatric dentistry at affordable rates with high quality care. The clinic is truly a one stop solution for all your dental needs. The clinic is open throughout the day to accomodate you as per your convenience of schedule around work and home chores.
-          </motion.p>
-
-          <motion.div variants={itemVariants} style={docStyles.statsContainer}>
-            <div>
-              <h3 style={{color:"var(--color-primary)", margin:0}}>100%</h3>
-              <p style={{fontSize:"0.9rem", margin:0}}>Positive (72 votes)</p>
-            </div>
-            <div>
-              <h3 style={{color:"var(--color-primary)", margin:0}}>72+</h3>
-              <p style={{fontSize:"0.9rem", margin:0}}>Patient Stories</p>
-            </div>
-            <div>
-              <h3 style={{color:"var(--color-primary)", margin:0}}>17</h3>
-              <p style={{fontSize:"0.9rem", margin:0}}>Years Exp.</p>
-            </div>
-          </motion.div>
+          {/* Gradient Overlay for Text */}
+          <div style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: "50%",
+            background: "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%)",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-end",
+            padding: "2.5rem"
+          }}>
+            <h3 style={{ color: "#fff", fontSize: "1.8rem", margin: "0 0 0.5rem 0", fontWeight: 500, fontFamily: "var(--font-serif)" }}>
+              N. Gada
+            </h3>
+            <span style={{ color: "#bfa573", fontSize: "0.75rem", letterSpacing: "2px", fontWeight: 600, textTransform: "uppercase" }}>
+              Founder - Implant & Cosmetic Dentistry
+            </span>
+          </div>
         </div>
-        
-      </motion.div>
+
+        {/* Right Content Section */}
+        <div style={{ flex: "1 1 500px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+          
+          <span style={{ color: "#bfa573", fontSize: "0.75rem", letterSpacing: "1px", fontWeight: 700, textTransform: "uppercase", marginBottom: "1rem", display: "block" }}>
+            Meet your doctor
+          </span>
+          
+          <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem" }}>
+            <h2 style={{ fontSize: "clamp(3rem, 5vw, 4.5rem)", fontWeight: 700, margin: 0, letterSpacing: "-1.5px", color: "#111", lineHeight: 1 }}>
+              Dr. Nilam Gada
+            </h2>
+            <span style={{ 
+              border: "1px solid #ccc", 
+              borderRadius: "20px", 
+              padding: "0.2rem 0.6rem", 
+              fontSize: "0.8rem", 
+              fontWeight: 700, 
+              color: "#555",
+              letterSpacing: "1px"
+            }}>
+              BDS
+            </span>
+          </div>
+
+          <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.7rem", fontStyle: "italic", color: "#111", lineHeight: 1.3, marginBottom: "3rem", maxWidth: "450px" }}>
+            One doctor who carries your case from the first scan to the last crown.
+          </p>
+
+          {/* Details Grid */}
+          <div style={{ 
+            display: "grid", 
+            gridTemplateColumns: "1fr 1fr", 
+            gap: "2rem",
+            borderTop: "1px solid rgba(0,0,0,0.08)",
+            borderBottom: "1px solid rgba(0,0,0,0.08)",
+            padding: "2.5rem 0",
+            marginBottom: "3rem"
+          }}>
+            
+            <div>
+              <div style={{ color: "#bfa573", fontSize: "0.65rem", letterSpacing: "2px", fontWeight: 700, marginBottom: "0.3rem" }}>EDUCATION</div>
+              <div style={{ fontSize: "0.9rem", color: "#333" }}>BDS, Mumbai University</div>
+            </div>
+
+            <div>
+              <div style={{ color: "#bfa573", fontSize: "0.65rem", letterSpacing: "2px", fontWeight: 700, marginBottom: "0.3rem" }}>EXPERIENCE</div>
+              <div style={{ fontSize: "0.9rem", color: "#333" }}>17+ Years in Practice</div>
+            </div>
+
+            <div>
+              <div style={{ color: "#bfa573", fontSize: "0.65rem", letterSpacing: "2px", fontWeight: 700, marginBottom: "0.3rem" }}>SPECIALIZATION</div>
+              <div style={{ fontSize: "0.9rem", color: "#333" }}>Implant & Cosmetic Dentistry</div>
+            </div>
+
+            <div>
+              <div style={{ color: "#bfa573", fontSize: "0.65rem", letterSpacing: "2px", fontWeight: 700, marginBottom: "0.3rem" }}>APPROACH</div>
+              <div style={{ fontSize: "0.9rem", color: "#333" }}>Gentle, Pain-Free Dentistry</div>
+            </div>
+
+            <div>
+              <div style={{ color: "#bfa573", fontSize: "0.65rem", letterSpacing: "2px", fontWeight: 700, marginBottom: "0.3rem" }}>CLINIC</div>
+              <div style={{ fontSize: "0.9rem", color: "#333" }}>The Dental Spark, Grant Road</div>
+            </div>
+
+            <div>
+              <div style={{ color: "#bfa573", fontSize: "0.65rem", letterSpacing: "2px", fontWeight: 700, marginBottom: "0.3rem" }}>LANGUAGES</div>
+              <div style={{ fontSize: "0.9rem", color: "#333" }}>English - Hindi - Gujarati - Marathi</div>
+            </div>
+
+          </div>
+
+          {/* Button */}
+          <div>
+            <a 
+              href="#contact"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.8rem",
+                backgroundColor: "#1a1a1a",
+                color: "#fff",
+                padding: "1rem 2rem",
+                borderRadius: "30px",
+                fontSize: "0.9rem",
+                fontWeight: 600,
+                textDecoration: "none",
+                transition: "background-color 0.2s"
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#333"}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#1a1a1a"}
+            >
+              More about the doctor 
+              <span style={{ 
+                display: "flex", 
+                alignItems: "center", 
+                justifyContent: "center", 
+                width: "24px", 
+                height: "24px", 
+                borderRadius: "50%", 
+                backgroundColor: "rgba(255,255,255,0.1)",
+                fontSize: "1.1rem"
+              }}>
+                →
+              </span>
+            </a>
+          </div>
+
+        </div>
+      </div>
     </section>
   );
 }
-
-const docStyles = {
-  container: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
-    gap: "var(--spacing-16)",
-    alignItems: "center",
-  },
-  content: {
-    display: "flex",
-    flexDirection: "column" as const,
-  },
-  taglineWrapper: {
-    backgroundColor: "var(--color-light)",
-    padding: "0.4rem 1rem",
-    borderRadius: "var(--border-radius-pill)",
-    marginBottom: "var(--spacing-2)",
-    width: "fit-content",
-  },
-  role: {
-    color: "var(--color-accent)",
-    fontWeight: 600,
-    marginBottom: "var(--spacing-4)",
-  },
-  badge: {
-    display: "inline-block",
-    backgroundColor: "var(--color-light)",
-    padding: "0.5rem 1rem",
-    borderRadius: "var(--border-radius-pill)",
-    color: "var(--color-primary-dark)",
-    width: "fit-content",
-    border: "1px solid rgba(2, 132, 199, 0.2)"
-  },
-  statsContainer: {
-    display: "flex",
-    gap: "var(--spacing-8)",
-    marginTop: "var(--spacing-6)",
-    paddingTop: "var(--spacing-6)",
-    borderTop: "1px solid rgba(0,0,0,0.05)",
-  },
-  imageWrapper: {
-    position: "relative" as const,
-    display: "flex",
-    justifyContent: "center",
-  },
-  imageBlob: {
-    position: "absolute" as const,
-    width: "100%",
-    height: "100%",
-    backgroundColor: "var(--color-accent)",
-    opacity: 0.1,
-    borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
-    top: 0,
-    left: 0,
-    transform: "scale(1.05)",
-    zIndex: 0,
-  },
-  image: {
-    borderRadius: "var(--border-radius-lg)",
-    boxShadow: "var(--shadow-lg)",
-    position: "relative" as const,
-    zIndex: 1,
-    objectFit: "cover" as const,
-  },
-  floatingBadge: {
-    position: "absolute" as const,
-    bottom: "10%",
-    right: "-5%",
-    backgroundColor: "var(--color-white)",
-    padding: "1rem 1.5rem",
-    borderRadius: "var(--border-radius-md)",
-    boxShadow: "var(--shadow-lg)",
-    zIndex: 2,
-    display: "flex",
-    flexDirection: "column" as const,
-    gap: "0.25rem",
-  },
-  stars: {
-    fontSize: "0.8rem",
-    letterSpacing: "2px",
-  }
-};
