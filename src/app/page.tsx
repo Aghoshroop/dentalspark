@@ -1,15 +1,28 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import MarqueeStrip from "@/components/MarqueeStrip";
-import FeatureStrip from "@/components/FeatureStrip";
-import Services from "@/components/Services";
-import DoctorProfile from "@/components/DoctorProfile";
-import Gallery from "@/components/Gallery";
+import TrainingTimeline from "@/components/TrainingTimeline";
+import SituationCards from "@/components/SituationCards";
+import ReasonsToChoose from "@/components/ReasonsToChoose";
+import PersonalPlan from "@/components/PersonalPlan";
+import AllServices from "@/components/AllServices";
+import FullArchFeature from "@/components/FullArchFeature";
+import TechnologyPrecision from "@/components/TechnologyPrecision";
+import Comparison from "@/components/Comparison";
+import ReadyToGetStarted from "@/components/ReadyToGetStarted";
+import MaterialsMatter from "@/components/MaterialsMatter";
+import NotAlone from "@/components/NotAlone";
+import PatientResults from "@/components/PatientResults";
+import StatsBanner from "@/components/StatsBanner";
+import PracticeGallery from "@/components/PracticeGallery";
+import PrivateGalleryLead from "@/components/PrivateGalleryLead";
+import SmileReel from "@/components/SmileReel";
 import Testimonials from "@/components/Testimonials";
-import BeforeAfterSlider from "@/components/BeforeAfterSlider";
-import BookingForm from "@/components/BookingForm";
-import Blog from "@/components/Blog";
-import Footer from "@/components/Footer";
+import DarkSectionWrapper from "@/components/DarkSectionWrapper";
+import DoctorProfile from "@/components/DoctorProfile";
+import LocationSection from "@/components/LocationSection";
+import FAQSection from "@/components/FAQSection";
+import FooterCTA from "@/components/FooterCTA";
+import GlobalFooter from "@/components/GlobalFooter";
 
 export default function Home() {
   return (
@@ -17,27 +30,59 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <MarqueeStrip />
-        <FeatureStrip />
-        <Services />
-        <DoctorProfile />
-        <Gallery />
-        <Testimonials hideForm />
-        <div style={{ padding: "var(--spacing-16) 0", backgroundColor: "#f8fafc" }}>
-           <div className="container" style={{ textAlign: "center", marginBottom: "var(--spacing-12)" }}>
-             <h2 style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>Transforming <span style={{ color: "var(--color-primary)" }}>Smiles</span></h2>
-             <p style={{ color: "var(--color-gray)", maxWidth: "600px", margin: "0 auto" }}>
-               Slide to see the incredible difference our advanced cosmetic procedures can make.
-             </p>
-           </div>
-           <div className="container">
-             <BeforeAfterSlider />
-           </div>
+        
+        {/* Combined Section for Timeline and Situation Cards to ensure seamless background and continuous grid */}
+        <div style={{
+          position: "relative",
+          backgroundColor: "#f4f3ed",
+          borderTopLeftRadius: "40px",
+          borderTopRightRadius: "40px",
+          boxShadow: "0 -20px 50px rgba(0,0,0,0.3)"
+          // Removed overflow: hidden here so position: sticky works on child elements!
+        }}>
+          {/* Microscopic Dots Grid Overlay */}
+          <div style={{
+            position: "absolute",
+            top: 0, left: 0, right: 0, bottom: 0,
+            backgroundImage: `radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px)`,
+            backgroundSize: "6px 6px",
+            pointerEvents: "none",
+            zIndex: 1,
+            borderTopLeftRadius: "40px",
+            borderTopRightRadius: "40px",
+            overflow: "hidden"
+          }}></div>
+
+          <div style={{ position: "relative", zIndex: 2 }}>
+            <TrainingTimeline />
+            <SituationCards />
+            <ReasonsToChoose />
+            <PersonalPlan />
+            <AllServices />
+            <FullArchFeature />
+            <TechnologyPrecision />
+            <Comparison />
+            <ReadyToGetStarted />
+            <MaterialsMatter />
+            <NotAlone />
+            <PatientResults />
+            <StatsBanner />
+            <PracticeGallery />
+            <PrivateGalleryLead />
+          </div>
         </div>
-        <BookingForm />
-        <Blog />
+        
+        <DarkSectionWrapper>
+          <SmileReel />
+          <Testimonials />
+        </DarkSectionWrapper>
+
+        <DoctorProfile />
+        <LocationSection />
+        <FAQSection />
+        <FooterCTA />
+        <GlobalFooter />
       </main>
-      <Footer />
     </>
   );
 }
